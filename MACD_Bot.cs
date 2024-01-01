@@ -21,6 +21,12 @@ namespace cAlgo
         [Parameter("Signal Periods", Group = "MACD", DefaultValue = 9)]
         public int SignalPeriods { get; set; }
 
+        [Parameter("Stop Loss (Pips)", Group = "Trading", DefaultValue = 10)]
+        public int StopLossPips { get; set; }
+
+        [Parameter("Take Profit (Pips)", Group = "Trading", DefaultValue = 10)]
+        public int TakeProfitPips { get; set; }
+
         private MacdHistogram macd;
 
         protected override void OnStart()
@@ -40,12 +46,12 @@ namespace cAlgo
             if (macd.Signal.Last(1) > macdLine && macd.Signal.Last(2) < (macd.Histogram.Last(2) + macd.Signal.Last(2)) && Bars.LastBar.Close < Bars.LastBar.Open)
             {
                 // Verkaufssignal, wenn die Signal-Linie die MACD-Linie von unten kreuzt und die Kerze rot ist
-                ExecuteMarketOrder(TradeType.Sell, SymbolName, Symbol.QuantityToVolumeInUnits(Quantity), "SampleMACD");
+                ExecuteMarketOrder(TradeType.Sell, SymbolName, Symbol.QuantityToVolumeInUnits(Quantity), "SampleMACD", StopLossPips, TakeProfitPips);
             }
             else if (macd.Signal.Last(1) < macdLine && macd.Signal.Last(2) > (macd.Histogram.Last(2) + macd.Signal.Last(2)) && Bars.LastBar.Close > Bars.LastBar.Open)
             {
                 // Kaufsignal, wenn die Signal-Linie die MACD-Linie von oben kreuzt und die Kerze grün ist
-                ExecuteMarketOrder(TradeType.Buy, SymbolName, Symbol.QuantityToVolumeInUnits(Quantity), "SampleMACD");
+                ExecuteMarketOrder(TradeType.Buy, SymbolName, Symbol.QuantityToVolumeInUnits(Quantity), "SampleMACD", StopLossPips, TakeProfitPips);
             }
         }
 
