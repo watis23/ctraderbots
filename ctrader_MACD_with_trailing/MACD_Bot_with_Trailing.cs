@@ -49,6 +49,20 @@ namespace cAlgo
             // Prüfe, ob eine Position bereits offen ist
             if (Positions.Count > 0) return;
 
+            // Berechne die MACD-Linie
+            double macdLine = macd.Histogram.LastValue + macd.Signal.LastValue;
+
+            // Prüfe die Kreuzung und die Farbe der letzten Kerze
+            if (macd.Signal.Last(1) > macdLine && macd.Signal.Last(2) < (macd.Histogram.Last(2) + macd.Signal.Last(2)) && Bars.LastBar.Close < Bars.LastBar.Open)
+            {
+                // Verkaufssignal, wenn die Signal-Linie die MACD-Linie von unten kreuzt und die Kerze rot ist
+                ExecuteMarketOrder(TradeType.Sell, SymbolName, Symbol.QuantityToVolumeInUnits(Quantity), "SampleMACD", StopLossPips, TakeProfitPips);
+            }
+            else if (macd.Signal.Last(1) < macdLine && macd.Signal.Last(2) > (macd.Histogram.Last(2) + macd.Signal.Last(2)) && Bars.LastBar.Close > Bars.LastBar.Open)
+            {
+                // Kaufsignal, wenn die Signal-Linie die MACD-Linie von oben kreuzt und die Kerze grün ist
+                ExecuteMarketOrder(TradeType.Buy, SymbolName, Symbol.QuantityToVolumeInUnits(Quantity), "SampleMACD", StopLossPips, TakeProfitPips);
+            }
         }
 
         private void UpdateTrailingStops()
