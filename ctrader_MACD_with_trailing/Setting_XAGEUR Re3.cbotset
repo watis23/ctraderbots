@@ -1,0 +1,17 @@
+﻿{
+  "Chart": {
+    "Symbol": "XAGEUR",
+    "Period": "Re3"
+  },
+  "Parameters": {
+    "Quantity": "0.01",
+    "Source": "Close",
+    "FastPeriods": "5",
+    "SlowPeriods": "24",
+    "SignalPeriods": "5",
+    "StopLossPips": "18",
+    "TakeProfitPips": "7",
+    "TrailingStopStart": "5",
+    "TrailingStopDistance": "5"
+  }
+}
