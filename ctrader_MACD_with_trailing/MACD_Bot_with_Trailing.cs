@@ -49,7 +49,6 @@ namespace cAlgo
             // Prüfe, ob eine Position bereits offen ist
             if (Positions.Count > 0) return;
 
-            // [Rest des Codes für das Öffnen neuer Positionen bleibt unverändert]
         }
 
         private void UpdateTrailingStops()
