@@ -1,0 +1,17 @@
+﻿{
+  "Chart": {
+    "Symbol": "EURUSD",
+    "Period": "Re2"
+  },
+  "Parameters": {
+    "Quantity": "0.01",
+    "Source": "Close",
+    "FastPeriods": "7",
+    "SlowPeriods": "10",
+    "SignalPeriods": "5",
+    "StopLossPips": "14",
+    "TakeProfitPips": "9",
+    "TrailingStopStart": "5",
+    "TrailingStopDistance": "-1"
+  }
+}
