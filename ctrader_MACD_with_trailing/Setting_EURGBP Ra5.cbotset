@@ -1,0 +1,17 @@
+﻿{
+  "Chart": {
+    "Symbol": "EURGBP",
+    "Period": "Ra5"
+  },
+  "Parameters": {
+    "Quantity": "0.01",
+    "Source": "Close",
+    "FastPeriods": "4",
+    "SlowPeriods": "26",
+    "SignalPeriods": "13",
+    "StopLossPips": "17",
+    "TakeProfitPips": "20",
+    "TrailingStopStart": "6",
+    "TrailingStopDistance": "5"
+  }
+}
