@@ -1,4 +1,10 @@
-Please note that the trading bots presented here were developed exclusively for testing purposes. They are intended to demonstrate and explore algorithmic trading strategies and are not intended for use in real trading scenarios. 
+# cTrader Bots 
+Here you can find my collection of cTrader bots for cTrader.
+I post these in the respective folder and always store a settings for the bot there. I will also expand this to include the results in the future
+
+## Disclaimer
+Please note that the trading bots presented here were developed exclusively for testing purposes. 
+They are intended to demonstrate and explore algorithmic trading strategies and are not intended for use in real trading scenarios. 
 
 Everyone is welcome to edit the code as they wish. I'm also looking forward to your changes/suggestions
 
