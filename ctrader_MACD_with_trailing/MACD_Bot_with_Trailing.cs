@@ -43,24 +43,24 @@ namespace cAlgo
 
         protected override void OnTick()
         {
-            // Aktualisiere Trailing Stops für offene Positionen
+            // Update trailing stops for open positions
             UpdateTrailingStops();
 
-            // Prüfe, ob eine Position bereits offen ist
+            // Check whether a position is already open
             if (Positions.Count > 0) return;
 
-            // Berechne die MACD-Linie
+            // Calculate the MACD line
             double macdLine = macd.Histogram.LastValue + macd.Signal.LastValue;
 
-            // Prüfe die Kreuzung und die Farbe der letzten Kerze
+            // Check the MACD crossing and the color of the last candle
             if (macd.Signal.Last(1) > macdLine && macd.Signal.Last(2) < (macd.Histogram.Last(2) + macd.Signal.Last(2)) && Bars.LastBar.Close < Bars.LastBar.Open)
             {
-                // Verkaufssignal, wenn die Signal-Linie die MACD-Linie von unten kreuzt und die Kerze rot ist
+                // Sell signal when the signal line crosses the MACD line from below and the candle is red
                 ExecuteMarketOrder(TradeType.Sell, SymbolName, Symbol.QuantityToVolumeInUnits(Quantity), "SampleMACD", StopLossPips, TakeProfitPips);
             }
             else if (macd.Signal.Last(1) < macdLine && macd.Signal.Last(2) > (macd.Histogram.Last(2) + macd.Signal.Last(2)) && Bars.LastBar.Close > Bars.LastBar.Open)
             {
-                // Kaufsignal, wenn die Signal-Linie die MACD-Linie von oben kreuzt und die Kerze grün ist
+                // Buy signal when the signal line crosses the MACD line from above and the candle is green
                 ExecuteMarketOrder(TradeType.Buy, SymbolName, Symbol.QuantityToVolumeInUnits(Quantity), "SampleMACD", StopLossPips, TakeProfitPips);
             }
         }
